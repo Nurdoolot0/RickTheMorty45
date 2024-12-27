@@ -13,7 +13,6 @@ import com.example.rickthemorty45.ui.characters.CharactersScreen
 import com.example.rickthemorty45.ui.common.AppBottomBar
 import com.example.rickthemorty45.ui.common.AppTopBar
 import com.example.rickthemorty45.ui.episodes.EpisodesScreen
-import com.example.rickthemorty45.ui.episodes.EpisodesViewModel
 import com.example.rickthemorty45.ui.favorites.FavoriteCharacterViewModel
 import com.example.rickthemorty45.ui.favorites.FavoriteCharactersScreen
 import com.example.rickthemorty45.ui.locations.LocationDetailScreen
@@ -24,7 +23,6 @@ import org.koin.androidx.compose.koinViewModel
 fun MainScreen() {
 
     val navController = rememberNavController()
-    val episodesViewModel = koinViewModel<EpisodesViewModel>()
 
     Scaffold(
         topBar = { AppTopBar(navController) },
@@ -36,7 +34,7 @@ fun MainScreen() {
                 composable("characters") { CharactersScreen(navController) }
                 composable("locations") { LocationsScreen(navController) }
                 composable("episodes") {
-                    EpisodesScreen(episodesViewModel)
+                    EpisodesScreen(navController = navController)
                 }
                 composable("character_detail/{characterId}") { backStackEntry ->
                     val characterId =

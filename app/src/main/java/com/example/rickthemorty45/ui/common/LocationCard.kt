@@ -20,9 +20,18 @@ fun LocationCard(location: LocationResponse.Location, onClick: () -> Unit) {
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
             Column {
-                Text(text = location.name, style = MaterialTheme.typography.bodyLarge)
-                Text(text = location.type, style = MaterialTheme.typography.bodySmall)
-                Text(text = location.dimension, style = MaterialTheme.typography.bodySmall)
+                Text(
+                    text = location.name,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                Text(
+                    text = location.type,
+                    style = MaterialTheme.typography.bodySmall
+                )
+                Text(
+                    text = location.dimension,
+                    style = MaterialTheme.typography.bodySmall
+                )
             }
         }
     }

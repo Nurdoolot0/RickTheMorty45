@@ -19,7 +19,7 @@ import coil.compose.AsyncImage
 import com.example.rickthemorty45.data.models.CharacterResponse
 
 @Composable
-fun CharacterCard(character: CharacterResponse.Character, onClick: () -> Unit, isFavorite: Boolean, onFavoriteClick: () -> Unit) {
+fun CharacterCard(character: CharacterResponse.Character?, onClick: () -> Unit, isFavorite: Boolean, onFavoriteClick: () -> Unit) {
     Card(
         modifier = Modifier
             .padding(8.dp)
@@ -28,17 +28,19 @@ fun CharacterCard(character: CharacterResponse.Character, onClick: () -> Unit, i
     ) {
         Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
             AsyncImage(
-                model = character.image,
-                contentDescription = character.name,
+                model = character?.image,
+                contentDescription = character?.name,
                 modifier = Modifier
                     .size(84.dp)
                     .padding(end = 16.dp)
             )
 
             Column(modifier = Modifier.weight(1f)) {
-                Text(text = character.name, style = MaterialTheme.typography.bodyLarge)
+                if (character != null) {
+                    Text(text = character.name, style = MaterialTheme.typography.bodyLarge)
+                }
                 Text(
-                    text = "${character.species} - ${character.status}",
+                    text = "${character?.species} - ${character?.status}",
                     style = MaterialTheme.typography.bodySmall
                 )
             }
